@@ -78,9 +78,9 @@ s = 1
 #### Menu ####       
 
 print "Default settings are no cropping, no scaling of intensities, and axes titles of Trap Collision Voltage(V) and Drift Time(ms)"
-optionsyn = raw_input("Would you like to change any of these settings? Please enter y or n : ")
+optionsyn = raw_input("Please press y to continue or n to change these settings  ")
 optionsyn = optionsyn.lower()
-if optionsyn == 'y':
+if optionsyn == 'n':
     while True:
         option = optionsmenu()
         if option == "1":
