@@ -1,3 +1,33 @@
+# Copyright (c) 2016 Joseph D. Eschweiler
+#
+#This file is part of CIUSUITE.
+
+#CIUSUITE is free software: you can redistribute it and/or modify
+#it under the terms of the GNU General Public License as published by
+#the Free Software Foundation, either version 3 of the License, or
+#(at your option) any later version.
+
+#CIUSUITE is distributed in the hope that it will be useful,
+#but WITHOUT ANY WARRANTY; without even the implied warranty of
+#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#GNU General Public License for more details.
+
+#You should have received a copy of the GNU General Public License
+#along with CIUSUITE.  If not, see <http://www.gnu.org/licenses/>.
+
+# Authors : Joseph D. Eschweiler; joeesch@umich.edu and Jessica Rabuck-Gibbons
+
+###############################################################################################################
+###############################################################################################################
+#PLEASE CITE:
+
+#CIUSuite: A Quantitative Analysis Package for Collision Induced Unfolding Measurements of Gas-Phase Protein Ions
+#Joseph D. Eschweiler, Jessica N. Rabuck-Gibbons, Yuwei Tian, and Brandon T. Ruotolo*
+#Anal. Chem., 2015, 87 (22), pp 11516–11522
+#DOI: 10.1021/acs.analchem.5b03292
+###############################################################################################################
+###############################################################################################################
+
 import os
 import sys
 import numpy as np
@@ -78,9 +108,9 @@ s = 1
 #### Menu ####       
 
 print "Default settings are no cropping, no scaling of intensities, and axes titles of Trap Collision Voltage(V) and Drift Time(ms)"
-optionsyn = raw_input("Please press y to continue or n to change these settings  ")
+optionsyn = raw_input("Would you like to change any of these settings? Please enter y or n : ")
 optionsyn = optionsyn.lower()
-if optionsyn == 'n':
+if optionsyn == 'y':
     while True:
         option = optionsmenu()
         if option == "1":

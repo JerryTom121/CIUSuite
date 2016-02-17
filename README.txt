@@ -1,19 +1,45 @@
+# Copyright (c) 2016 Joseph D. Eschweiler
+#
+#This file is part of CIUSUITE.
+
+#CIUSUITE is free software: you can redistribute it and/or modify
+#it under the terms of the GNU General Public License as published by
+#the Free Software Foundation, either version 3 of the License, or
+#(at your option) any later version.
+
+#CIUSUITE is distributed in the hope that it will be useful,
+#but WITHOUT ANY WARRANTY; without even the implied warranty of
+#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#GNU General Public License for more details.
+
+#You should have received a copy of the GNU General Public License
+#along with CIUSUITE.  If not, see <http://www.gnu.org/licenses/>.
+
+# Authors : Joseph D. Eschweiler; joeesch@umich.edu and Jessica Rabuck-Gibbons
+
+###############################################################################################################
+###############################################################################################################
+PLEASE CITE:
+
+CIUSuite: A Quantitative Analysis Package for Collision Induced Unfolding Measurements of Gas-Phase Protein Ions
+Joseph D. Eschweiler, Jessica N. Rabuck-Gibbons, Yuwei Tian, and Brandon T. Ruotolo*
+Anal. Chem., 2015, 87 (22), pp 11516–11522
+DOI: 10.1021/acs.analchem.5b03292
+###############################################################################################################
+###############################################################################################################
+
 CIUSuite is a suite of tools for the analysis of CIU data. These tools are in the form of python scripts with unique functionality.
 
-CIUSuite was authored by Joseph Eschweiler and Jessica Rabuck and is awaiting publication, Please do not distribute these programs without prior consent
+Correspondence to Joseph Eschweiler; joeesch@umich.edu
 
-Correspondence to Joe at joeesch@umich.edu
-
-*******
-
-All scripts written in python2.7, and some have different dependencies. If you're savy with python, you may have all of the dependent libraries installed already. If you are not savy, We recommend using The Enthough Canopy python environment to deal with dependencies. https://store.enthought.com/downloads/#default  The free version should do, and you can also upgrade with an academic license. 
-
-********
-
+Dependencies: numpy, matplotlib, scipy
 
 ###CIUSuite_plot.py###
 
-Dependencies : numpy, matplotlib, scipy
+###############################################################################################################
+I've also included CIUSuite_plot_3_sn.py which shows you the signal to noise over your energy ramp. Very useful
+for unstable proteins or for CIU Experiments. Don't get caught interpretting something that isn't real!
+################################################################################################################
 
 The foundation of the CIUSuite is CIUSuite_plot.py. This script will read all files in the working directory
 ending in "_raw.csv" and generate CIU fingerprints for them. When you run this script, you'll be asked
@@ -49,9 +75,6 @@ uniform dimensionality is required.
 
 
 ###CIUSuite_stats.py###
-
-Dependencies : numpy, matplotlib
-
 CIUSuite_stats is a simple program to generate average and standard deviation plots from CIU data.
 CIUSuite_stats will calculate the average and standard deviation matrices for all _raw.csv files in
 the working directory. 
@@ -69,7 +92,11 @@ scripts.
 
 ###CIUSuite_compare.py###
 
-Dependencies : numpy, matplotlib, scipy, csv, PyCluster(for cluster mode only)
+#### UPDATES FOR V3 (PYTHON 3 VERSION) 2/16/16####
+RMSD IS NOW MUCH MORE ROBUST TO CHANGES IN MATRIX SIZE AND TOTAL NOISE--RMSD VALUES WILL NOT CORRELATE TO OLD ONES
+NEW COLORMAP
+STREAMLINED CODE A BIT AND DEPRECATED CLUSTER MODE
+#####################################################################
 
 This script is useful for comparison of CIU fingerprints. It operates in three modes, Basic, Batch, and Cluster.
 Upon executing the script, you'll be asked to choose which mode to run in. 
@@ -108,9 +135,6 @@ matrix if you want to do some other form of clustering(for example, hierarchical
 
 
 ###CIUSuite_Analysis.py###
-
-Dependencies : Numpy, matplotlib
-
 CIUSuite_analysis provides statistical analysis useful in narrowing the search window for high throughput screens and allowing the user to choose high information content regions for classifying spectra. CIU_analysis takes as input raw or normalized files
 ending in _typeX_raw.csv. The type tag is necessary for grouping the "training" data in the beginning of the program. 
 
@@ -128,9 +152,6 @@ important, especially when working with small datasets.
 
 
 ###CIUSuite_Score.py ###
-
-Dependencies : numpy, matplotlib, csv
-
 This program shares much functionality with CIUSuite_Analysis, however in addition to training data, it also accepts unclassified data,
 tagged with _UK_Raw.csv. The ultimate function of the program is to provide scores corresponding to the TYPEI or TYPEII character of 
 a spectrum. 
@@ -157,8 +178,6 @@ SDS is calculated for each collision energy and the final score is the sum of SD
 
 ###CIUSuite_detect###
 
-Dependencies : Numpy, scipy, matplotlib, csv
-
 CIUSuite_detect is an elementary feature detection algorithm for CIU fingerprints. We have found CIUSuite works well for detecting and characterizing features
 that are well resolved in DT or CV, however the accuracy of the feature detection is poor when dealing with poorly resolved features. CIU_detect works by using the first derivative test to identify local maxima in the data. Then, using user-defined scaling factors(exponents, ie 2 for square the data, 0.5 square root the data) the features can be refined to separate or combine features(not an exact science,see Zhong et al, DOI: 10.1002/anie.201403784 for more info)
 
@@ -172,8 +191,6 @@ Inputs:
 	Intensity Threshold: %signal intensity threshold to take as a feature. ~80 usually gives accurate representation and separation of features. 
 
 The script is handy for batch processing, it takes all files _raw.csv.
-
-Improvements to this script are planned
 
 
 
