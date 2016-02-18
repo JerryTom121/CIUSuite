@@ -190,12 +190,16 @@ for item in files:
 			#print(mean)
 		
 		noise = np.mean(sorted(means)[:3])
-		print(noise)
+		#print(noise)
 		noises.append(noise)
 
 	noises = np.array(noises)
 	noises[noises == 0] = 1e-8
 	noises[noises < 0] = 1e-8
+
+	maximum = (1/np.min(noises))
+	minimum = (1/np.max(noises))
+	
 	
 	#sn.append(noises)
 	#inoises = 1/noises
@@ -203,11 +207,12 @@ for item in files:
 	#print(noises)
 	#print(inoises)
 	#print(lnoises)
-	allData.append((ND1, AP, FN, crops, noises)) ### dump the data without axes and the filename to the list above
+	allData.append((ND1, AP, FN, crops, noises, maximum, minimum)) ### dump the data without axes and the filename to the list above
 
 for item in allData:
 	generateCIUPlot(item[0], item[1], item[2], item[3], item[4])  #make the plot
 	print("Processing", item[2])
+	print("Signal to noise ranged from " + '{:.1e}'.format(item[5]) + " to " + '{:.1e}'.format(item[6])+ " over the course of this experiment")
 	
 	
 
